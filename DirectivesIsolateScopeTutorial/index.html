@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+  <title>Custom Services</title>
+</head>
+<body ng-app="ShoppingListDirectiveIsolateApp">
+  <h1>Custom Service through Factory</h1>
+
+  <!-- List #1- Unlimited items-->
+  <div id="list1" ng-controller="ShoppingListController1 as list1">
+    <input type="text" ng-model="list1.itemName" placeholder="item name">
+    <input type="text" ng-model="list1.itemQty" value="item quantity">
+    <button type="button" ng-click="list1.addItem()">Add Item</button>
+    <shopping-list my-list="list1" title="{{list1.title}}"></shopping-list>
+  </div>
+
+  <!--List #2- Max 3 items-->
+  <div ng-controller="ShoppingListController2 as list2">
+    <input type="text" ng-model="list2.itemName" placeholder="item name">
+    <input type="text" ng-model="list2.itemQty" value="item quantity">
+    <button type="button" ng-click="list2.addItem()">Add Item</button>
+    <shopping-list my-list="list2" title="Shopping List #2 (limited to 3 items)"></shopping-list>
+    {{list2.errorMessage}}
+  </div>
+</body>
+</html>
